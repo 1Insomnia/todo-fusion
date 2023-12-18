@@ -1,6 +1,7 @@
 // Comps
 import AddTodo from "./components/AddTodo"
 import Header from "./components/Header"
+import ModalRemoveAll from "./components/ModalRemoveAll"
 import TodoDisplay from "./components/TodoDisplay"
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
           <AddTodo />
           <TodoDisplay />
         </div>
+        <ModalRemoveAll />
       </main>
     </div>
   )

@@ -1,12 +1,12 @@
-import { useTodos } from "../hooks/useTodos"
+import { useModalRemoveAll } from "../hooks/useModaRemoveAll"
 
 export default function ResetAllBtn() {
-  const { removeAll } = useTodos()
+  const { openModalRemoveAll } = useModalRemoveAll()
 
   return (
     <button
       className="flex flex-row-reverse items-center h-8 p-2 bg-primary-magenta"
-      onClick={() => removeAll()}
+      onClick={() => openModalRemoveAll()}
     >
       <span className="block ml-2">Reset </span>
       <svg
