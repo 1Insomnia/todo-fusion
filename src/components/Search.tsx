@@ -1,53 +1,56 @@
 import clsx from "clsx"
-import { useState } from "react"
+import { useTodos } from "../hooks/useTodos"
+import React from "react"
 
-export default function Search() {
-  const [showbar, setShowbar] = useState(false)
+interface SearchProps {
+  search: string
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+}
+
+export default function Search({ search, setSearch }: SearchProps) {
+  const { todos } = useTodos()
 
   return (
-    <div
-      className={clsx(
-        "flex bg-foreground border-2",
-        "focus-within:border-primary-blue"
-      )}
-    >
-      <button
-        className="bg-foreground text-background-lighter outline-none px-2"
-        tabIndex={1}
-        onClick={() => setShowbar(prev => !prev)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-          />
-        </svg>
-      </button>
-      <input
+    todos.length > 0 && (
+      <div
         className={clsx(
-          "text-background-lighter outline-none block w-full p-2 h-8",
-          showbar ? "block" : "hidden"
+          "h-10 text-sm max-w-screen-sm w-full mx-auto bg-background-lighter flex mt-5",
+          "focus-within:border-primary-blue"
         )}
-        type="text"
-        inputMode="text"
-        required
-        placeholder="search"
-        aria-label="search item"
-        tabIndex={1}
-        autoComplete="off"
-        maxLength={255}
-        autoFocus
-        id="search"
-        name="search"
-      />
-    </div>
+      >
+        <button className="bg-background-lighter outline-none px-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+        <input
+          className="outline-none block w-full bg-background-lighter"
+          type="search"
+          inputMode="search"
+          required
+          placeholder="search"
+          aria-label="search item"
+          tabIndex={1}
+          autoComplete="off"
+          maxLength={255}
+          autoFocus
+          id="search"
+          name="search"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+      </div>
+    )
   )
 }

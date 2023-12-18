@@ -1,5 +1,4 @@
 import ResetAllBtn from "./ResetAllBtn"
-import Search from "./Search"
 
 export default function Header() {
   return (
@@ -9,7 +8,6 @@ export default function Header() {
           <h1 className="font-bold tracking-tight">Todo Fusion</h1>
           <div className="flex items-center h-full gap-2">
             <ResetAllBtn />
-            <Search />
           </div>
         </div>
       </div>

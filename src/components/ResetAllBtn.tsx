@@ -5,7 +5,7 @@ export default function ResetAllBtn() {
 
   return (
     <button
-      className="flex flex-row-reverse items-center h-8 p-2 bg-primary-magenta"
+      className="flex flex-row-reverse items-center h-8 p-2 bg-primary-magenta font-bold tracking-tighter"
       onClick={() => openModalRemoveAll()}
     >
       <span className="block ml-2">Reset </span>
