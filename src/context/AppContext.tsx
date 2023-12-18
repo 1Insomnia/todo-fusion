@@ -18,6 +18,10 @@ export const AppContext = createContext<ContextType | null>(null)
 export const AppProvider = ({ children }) => {
   const [todos, setTodos] = useState<TodoType[] | []>(getInitialState())
 
+  const pending = todos.filter(todo => todo.status === "pending")
+  const paused = todos.filter(todo => todo.status === "paused")
+  const completed = todos.filter(todo => todo.status === "completed")
+
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
@@ -42,6 +46,9 @@ export const AppProvider = ({ children }) => {
 
   const value = {
     todos,
+    pending,
+    paused,
+    completed,
     addTodo,
     updateTodo,
     removeTodo
