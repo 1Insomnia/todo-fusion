@@ -8,8 +8,16 @@ export const useTodos = () => {
     throw new Error("outside scope of App")
   }
 
-  const { todos, addTodo, updateTodo, removeTodo, completed, paused, pending } =
-    appContext
+  const {
+    todos,
+    addTodo,
+    updateTodo,
+    removeTodo,
+    completed,
+    paused,
+    pending,
+    removeAll
+  } = appContext
 
   return {
     todos,
@@ -18,6 +26,7 @@ export const useTodos = () => {
     removeTodo,
     pending,
     paused,
-    completed
+    completed,
+    removeAll
   }
 }

@@ -1,11 +1,15 @@
 import { TodoType } from "../types"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 interface ContextType {
   todos: TodoType[]
+  pending: TodoType[]
+  paused: TodoType[]
+  completed: TodoType[]
   addTodo: (todo: TodoType) => void
   updateTodo: (id: TodoType["id"], status: TodoType["status"]) => void
   removeTodo: (id: TodoType["id"]) => void
+  removeAll: () => void
 }
 
 const getInitialState = () => {
@@ -44,6 +48,10 @@ export const AppProvider = ({ children }) => {
     setTodos(newState)
   }
 
+  const removeAll = () => {
+    setTodos([])
+  }
+
   const value = {
     todos,
     pending,
@@ -51,7 +59,8 @@ export const AppProvider = ({ children }) => {
     completed,
     addTodo,
     updateTodo,
-    removeTodo
+    removeTodo,
+    removeAll
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

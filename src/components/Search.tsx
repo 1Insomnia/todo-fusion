@@ -5,7 +5,12 @@ export default function Search() {
   const [showbar, setShowbar] = useState(false)
 
   return (
-    <div className="flex bg-foreground border-2 focus-within:border-primary-blue">
+    <div
+      className={clsx(
+        "flex bg-foreground border-2",
+        "focus-within:border-primary-blue"
+      )}
+    >
       <button
         className="bg-foreground text-background-lighter outline-none px-2"
         tabIndex={1}
