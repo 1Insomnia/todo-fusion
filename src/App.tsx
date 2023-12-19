@@ -8,7 +8,7 @@ import TodoDisplay from "./components/TodoDisplay"
 import Search from "./components/Search"
 
 export default function App() {
-  const [search, setSearch] = useState<string>("")
+  const [search, setSearch] = useState("")
 
   return (
     <div className="text-foreground bg-background min-h-screen font-sans">

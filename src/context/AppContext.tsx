@@ -22,7 +22,7 @@ const getInitialState = () => {
 
 export const AppContext = createContext<ContextType | null>(null)
 
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [todos, setTodos] = useState<TodoType[] | []>(getInitialState())
   const [showModalRemoveAll, setShowModalRemoveAll] = useState(false)
 

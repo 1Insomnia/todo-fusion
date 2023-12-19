@@ -4,7 +4,7 @@ import React from "react"
 
 interface SearchProps {
   search: string
-  setSearch: React.Dispatch<React.SetStateAction<string>>
+  setSearch: React.Dispatch<React.SetStateAction<SearchProps["search"]>>
 }
 
 export default function Search({ search, setSearch }: SearchProps) {

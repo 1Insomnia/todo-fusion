@@ -2,7 +2,11 @@ import { useTodos } from "../hooks/useTodos"
 // Comps
 import TodoList from "./TodoList"
 
-export default function TodoDisplay({ search }: string) {
+interface TodoDisplayProps {
+  search: string
+}
+
+export default function TodoDisplay({ search }: TodoDisplayProps) {
   const { pending, paused, completed } = useTodos()
 
   const show =
@@ -22,14 +26,22 @@ export default function TodoDisplay({ search }: string) {
           <TodoList
             title="paused"
             color="text-primary-flamingo"
-            data={paused.filter(item => item.content.includes(search))}
+            data={paused.filter(item => {
+              if (typeof search === "string") {
+                return item.content.includes(search)
+              }
+            })}
           />
         ) : null}
         {completed.length >= 1 ? (
           <TodoList
             title="completed"
             color="text-primary-blue"
-            data={completed.filter(item => item.content.includes(search))}
+            data={completed.filter(item => {
+              if (typeof search === "string") {
+                return item.content.includes(search)
+              }
+            })}
           />
         ) : null}
       </section>
